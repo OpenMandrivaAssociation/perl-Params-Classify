@@ -1,5 +1,5 @@
 %define upstream_name    Params-Classify
-%define upstream_version 0.012
+%define upstream_version 0.013
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
