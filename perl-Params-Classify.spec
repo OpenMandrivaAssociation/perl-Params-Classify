@@ -3,7 +3,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:	2
+Release:    %mkrel 1
 
 Summary:    Argument type classification
 License:    GPL+ or Artistic
@@ -68,4 +68,19 @@ rm -rf %buildroot
 %{_mandir}/man3/*
 %perl_vendorlib/*
 
+
+
+
+%changelog
+* Sun Nov 28 2010 Guillaume Rousse <guillomovitch@mandriva.org> 0.13.0-1mdv2011.0
++ Revision: 602384
+- update to new version 0.013
+
+* Fri Nov 12 2010 Jérôme Quelin <jquelin@mandriva.org> 0.12.0-1mdv2011.0
++ Revision: 596637
+- update to 0.012
+
+* Sat Aug 28 2010 Shlomi Fish <shlomif@mandriva.org> 0.11.0-1mdv2011.0
++ Revision: 573815
+- import perl-Params-Classify
 
