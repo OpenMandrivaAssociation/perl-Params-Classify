@@ -1,27 +1,24 @@
-%define upstream_name    Params-Classify
-%define upstream_version 0.013
+%define modname	Params-Classify
+%define modver	0.013
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
-
-Summary:    Argument type classification
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Params/%{upstream_name}-%{upstream_version}.tar.gz
-
-BuildRequires: perl(Exporter)
-BuildRequires: perl(ExtUtils::CBuilder)
-BuildRequires: perl(Module::Build)
-BuildRequires: perl(Scalar::Util)
-BuildRequires: perl(Test::More)
-BuildRequires: perl(parent)
-BuildRequires: perl(strict)
-BuildRequires: perl(warnings)
-BuildRequires: perl(Module::Build::Compat)
-BuildRequires: perl-devel
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+Summary:	Argument type classification
+Name:		perl-%{modname}
+Version:	%perl_convert_version %{modver}
+Release:	2
+License:	GPLv2+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{modname}
+Source0:	http://www.cpan.org/modules/by-module/Params/%{modname}-%{modver}.tar.gz
+BuildRequires:	perl(Exporter)
+BuildRequires:	perl(ExtUtils::CBuilder)
+BuildRequires:	perl(Module::Build)
+BuildRequires:	perl(Scalar::Util)
+BuildRequires:	perl(Test::More)
+BuildRequires:	perl(parent)
+BuildRequires:	perl(strict)
+BuildRequires:	perl(warnings)
+BuildRequires:	perl(Module::Build::Compat)
+BuildRequires:	perl-devel
 
 %description
 This module provides various type-testing functions. These are intended for
@@ -33,7 +30,7 @@ C++).
 There are two flavours of function in this module. Functions of the first
 flavour only provide type classification, to allow code to discriminate
 between argument types. Functions of the second flavour package up the most
-common type of type discrimination: checking that an argument is of an
+common type of type discrimination:	checking that an argument is of an
 expected type. The functions come in matched pairs, of the two flavours,
 and so the type enforcement functions handle only the simplest requirements
 for arguments of the types handled by the classification functions.
@@ -45,42 +42,21 @@ This module is implemented in XS, with a pure Perl backup version for
 systems that can't handle XS.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -qn %{modname}-%{modver}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+%__perl Makefile.PL INSTALLDIRS=vendor
 
-%{make}
+%make
 
 %check
-%{make} test
+%make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes README
+%{perl_vendorlib}/*
 %{_mandir}/man3/*
-%perl_vendorlib/*
-
-
-
-
-%changelog
-* Sun Nov 28 2010 Guillaume Rousse <guillomovitch@mandriva.org> 0.13.0-1mdv2011.0
-+ Revision: 602384
-- update to new version 0.013
-
-* Fri Nov 12 2010 Jérôme Quelin <jquelin@mandriva.org> 0.12.0-1mdv2011.0
-+ Revision: 596637
-- update to 0.012
-
-* Sat Aug 28 2010 Shlomi Fish <shlomif@mandriva.org> 0.11.0-1mdv2011.0
-+ Revision: 573815
-- import perl-Params-Classify
 
