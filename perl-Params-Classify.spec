@@ -1,10 +1,10 @@
 %define modname	Params-Classify
-%define modver	0.013
+%define modver	0.015
 
 Summary:	Argument type classification
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	12
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{modname}
@@ -18,6 +18,8 @@ BuildRequires:	perl(parent)
 BuildRequires:	perl(strict)
 BuildRequires:	perl(warnings)
 BuildRequires:	perl(Module::Build::Compat)
+BuildRequires:	perl(DynaLoader::Functions)
+BuildRequires:	perl(Devel::CallChecker)
 BuildRequires:	perl-devel
 
 %description
@@ -43,20 +45,18 @@ systems that can't handle XS.
 
 %prep
 %setup -qn %{modname}-%{modver}
+%__perl Build.PL installdirs=vendor optimize="%{optflags}"
 
 %build
-%__perl Makefile.PL INSTALLDIRS=vendor
-
-%make
+./Build
 
 %check
-%make test
+./Build test
 
 %install
-%makeinstall_std
+./Build install destdir="%{buildroot}"
 
 %files
 %doc Changes README
-%{perl_vendorlib}/*
+%{perl_vendorarch}/*
 %{_mandir}/man3/*
-
