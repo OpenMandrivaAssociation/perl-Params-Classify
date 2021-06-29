@@ -4,7 +4,7 @@
 Summary:	Argument type classification
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	4
+Release:	5
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://metacpan.org/pod/Params::Classify
@@ -44,7 +44,7 @@ This module is implemented in XS, with a pure Perl backup version for
 systems that can't handle XS.
 
 %prep
-%setup -qn %{modname}-%{modver}
+%autosetup -p1 -n %{modname}-%{modver}
 %__perl Build.PL installdirs=vendor optimize="%{optflags}"
 
 %build
