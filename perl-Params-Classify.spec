@@ -1,10 +1,10 @@
-%define modname	Params-Classify
-%define modver	0.015
+%define modname Params-Classify
+%define modver 0.015
 
 Summary:	Argument type classification
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	4
+Release:	5
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://metacpan.org/pod/Params::Classify
@@ -44,8 +44,8 @@ This module is implemented in XS, with a pure Perl backup version for
 systems that can't handle XS.
 
 %prep
-%setup -qn %{modname}-%{modver}
-%__perl Build.PL installdirs=vendor optimize="%{optflags}"
+%autosetup -p1 -n %{modname}-%{modver}
+perl Build.PL installdirs=vendor optimize="%{optflags}"
 
 %build
 ./Build
@@ -59,4 +59,4 @@ systems that can't handle XS.
 %files
 %doc Changes README
 %{perl_vendorarch}/*
-%{_mandir}/man3/*
+%doc %{_mandir}/man3/*
