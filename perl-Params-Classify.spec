@@ -1,5 +1,9 @@
 %define modname Params-Classify
 %define modver 0.015
+%ifarch %{x86_64}
+# FIXME BUG
+%define _debugsource_template %{nil}
+%endif
 
 Summary:	Argument type classification
 Name:		perl-%{modname}
