@@ -11,7 +11,7 @@ Version:	%perl_convert_version %{modver}
 Release:	3
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
-Url:		http://metacpan.org/pod/Params::Classify
+Url:		https://metacpan.org/pod/Params::Classify
 Source0:	http://www.cpan.org/modules/by-module/Params/%{modname}-%{modver}.tar.gz
 BuildRequires:	perl(Exporter)
 BuildRequires:	perl(ExtUtils::CBuilder)
