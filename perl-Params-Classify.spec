@@ -1,18 +1,13 @@
 %define modname Params-Classify
-%define modver 0.015
-%ifarch %{x86_64}
-# FIXME BUG
-%define _debugsource_template %{nil}
-%endif
 
 Summary:	Argument type classification
 Name:		perl-%{modname}
-Version:	%perl_convert_version %{modver}
-Release:	4
+Version:	0.015
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/pod/Params::Classify
-Source0:	http://www.cpan.org/modules/by-module/Params/%{modname}-%{modver}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Params/%{modname}-%{version}.tar.gz
 BuildRequires:	perl(Exporter)
 BuildRequires:	perl(ExtUtils::CBuilder)
 BuildRequires:	perl(Module::Build)
@@ -48,7 +43,7 @@ This module is implemented in XS, with a pure Perl backup version for
 systems that can't handle XS.
 
 %prep
-%autosetup -p1 -n %{modname}-%{modver}
+%autosetup -p1 -n %{modname}-%{version}
 perl Build.PL installdirs=vendor optimize="%{optflags}"
 
 %build
